@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Home Assignment</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<style>
+    #top {
+        margin-top: center;
+        margin-left: center;
+        margin-right: center;
+        width: center;
+        text-align: center;
+        padding: 20px;
+    }
+
+    #wrapper {
+        width: 250px;
+        display: grid;
+        grid-template-columns: repeat(5, 50px);
+        grid-template-rows: repeat(5, 50px);
+        grid-auto-flow: column;
+        margin: auto;
+    }
+
+    #wrapper option {
+        grid-template-columns: repeat(5, 70px);
+        grid-template-rows: repeat(5, 700px);
+    }
+
+    .box {
+        border: 1px rgb(0, 0, 0) solid;
+        background-color: rgb(255, 255, 255);
+    }
+
+    #selections {
+        width: 150px;
+        height: 30px;
+    }
+
+    .changesize {  
+        display: inline-block;  
+        background-color: #ffffff;
+        font-size: 15px;
+        outline: 6px;
+        border-radius: 6px;
+    }
+</style>
+
+<body>
+    <div id="top">
+            <select class="changesize" id="selections">
+            <option value="" disabled selected>Select Mode</option>
+            <option value="repeat(5, 30px)">Small Size</option>
+            <option value="repeat(5, 50px)">Normal Size</option>
+            <option value="repeat(5, 100px)">Big Size</option>
+        </select>
+        <input class="changesize" style="background-color: #4f96f3;" type="button" value="start" onClick="changeGridSize()">
+    </div>
+    <div id="wrapper">
+        <div class="box" id="box1"></div>
+        <div class="box" id="box2"></div>
+        <div class="box" id="box3"></div>
+        <div class="box" id="box4"></div>
+        <div class="box" id="box5"></div>
+        <div class="box" id="box6"></div>
+        <div class="box" id="box7"></div>
+        <div class="box" id="box8"></div>
+        <div class="box" id="box9"></div>
+        <div class="box" id="box10"></div>
+        <div class="box" id="box11"></div>
+        <div class="box" id="box12"></div>
+        <div class="box" id="box13"></div>
+        <div class="box" id="box14"></div>
+        <div class="box" id="box15"></div>
+        <div class="box" id="box16"></div>
+        <div class="box" id="box17"></div>
+        <div class="box" id="box18"></div>
+        <div class="box" id="box19"></div>
+        <div class="box" id="box20"></div>
+        <div class="box" id="box21"></div>
+        <div class="box" id="box22"></div>
+        <div class="box" id="box23"></div>
+        <div class="box" id="box24"></div>
+        <div class="box" id="box25"></div>
+    </div>
+    <script>
+
+        function changeBoxColor(elem) {
+            var el = document.getElementById(elem);
+            let myDivObjBgColor = window.getComputedStyle(el).backgroundColor;
+            if (myDivObjBgColor == "rgb(255, 255, 255)") {
+                el.style.backgroundColor = "cyan";
+            } else {
+                el.style.backgroundColor = "white";
+            }
+        }
+
+        var elem = document.getElementsByClassName("box");
+        for (var i = 0; i < elem.length; i++) {
+            (function () {
+                var boxc = elem[i].id;
+                elem[i].addEventListener('mouseover', function handleMouseOver() {
+                    changeBoxColor(boxc);
+                }, false);
+            }());
+        }
+        
+        function changeGridSize() {
+            var elem = document.getElementsByClassName("box");  
+            for (var i = 0; i < elem.length; i++) {
+                var el = document.getElementById(elem[i].id);
+                el.style.backgroundColor = "white";
+            }
+            var e = document.getElementById("selections");
+            var size = e.value;
+            document.getElementById("wrapper").style.gridTemplateColumns = size;
+            document.getElementById("wrapper").style.gridTemplateRows = size;
+
+        }
+
+    </script>
+</body>
+
+</html>
